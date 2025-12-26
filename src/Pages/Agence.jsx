@@ -37,7 +37,7 @@ const Agence = () => {
         <div ref={imgDivRef} className="h-[44vh] w-[15.2vw] overflow-hidden rounded-2xl absolute top-[22%] left-[30%] bg-red-500">
           <img ref={imgRef} className="object-cover h-full w-full" src="img1.jpg" alt="" />
         </div>
-        <div className="font-[font500] relative">
+        <div className="font-[font500] relative py-1">
           <div className="mt-[56vh]">
             <h1 className="text-[20vw] leading-[17vw] text-center uppercase">Seven7y <br /> two</h1>
           </div>
