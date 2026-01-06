@@ -10,14 +10,15 @@
     src: url(../public/Lausanne-500.woff2);
 }
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
 }
 
-.navOverlay{
+.navOverlay {
     animation-name: navMove;
     animation-duration: 10s;
     animation-iteration-count: infinite;
@@ -25,18 +26,29 @@ body, html {
 
 }
 
-.navBar:hover .moveNav{
-    display: flex;
+.closeMenu:hover div {
+    background-color: #D3FD50;
+    transition: background-color 0.2s ease;
+}
+
+.moveNav {
+    /* opacity: 0; */
+    transition: all ease 0.3s;
+}
+
+.navBar:hover .moveNav {
+    opacity: 1;
     height: 100%;
-    transition: all;
+    display: flex;
+
 }
 
 @keyframes navMove {
-   from {
-    transform: translateX(0); 
-  }
-  
-  to {
-    transform: translateX(-100%);
-  }
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }

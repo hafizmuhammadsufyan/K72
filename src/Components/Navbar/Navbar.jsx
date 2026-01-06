@@ -1,11 +1,11 @@
 import React, { useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     let locate = useLocation()
 
-    console.log(locate.pathname);
-    
+    let navigate = useNavigate()
+
 
     const navGreenRef = useRef(null)
     const icon = useRef(null)
@@ -19,7 +19,10 @@ const Navbar = () => {
                     </svg>
                 </div>
             </div>
-            <Link to='/fullscreennav'>
+            {locate.pathname == "/fullscreennav" ? <div onClick={()=>{navigate(-1)}} className='closeMenu w-[6.5vw] m-3 relative cursor-pointer h-20'>
+                <div className='h-28 w-0.5 -rotate-45  origin-top absolute bg-white'></div>
+                <div className='h-28 w-0.5 right-0 rotate-45  origin-top absolute bg-white'></div>
+            </div> : <Link to='/fullscreennav'>
                 <div className='w-[15vw] h-15 relative bg-black cursor-pointer'
                     onMouseEnter={() => { navGreenRef.current.style.height = "100%", icon.current.style.color = "black" }}
                     onMouseLeave={() => { navGreenRef.current.style.height = "0%", icon.current.style.color = "white" }}>
@@ -29,7 +32,8 @@ const Navbar = () => {
                         <i ref={icon} className="ri-menu-4-line z-2"></i>
                     </div>
                 </div>
-            </Link>
+            </Link>}
+
         </div>
     )
 }
