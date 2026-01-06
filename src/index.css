@@ -16,3 +16,27 @@ body, html {
     box-sizing: border-box;
     overflow-x: hidden;
 }
+
+.navOverlay{
+    animation-name: navMove;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+}
+
+.navBar:hover .moveNav{
+    display: flex;
+    height: 100%;
+    transition: all;
+}
+
+@keyframes navMove {
+   from {
+    transform: translateX(0); 
+  }
+  
+  to {
+    transform: translateX(-100%);
+  }
+}
