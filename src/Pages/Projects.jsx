@@ -10,10 +10,6 @@ const Projects = () => {
   const workUpperMiddle = useRef(null)
   const workUpperRight = useRef(null)
 
-  // console.log(workUpperLeft.current.innerText);
-
-
-
   const workData = [
     {
       workImg1: "workimg1.png",
@@ -55,6 +51,37 @@ const Projects = () => {
       left2: "Lassonde",
       middle2: "Fruite",
       right2: "2021"
+    },
+
+    {
+      workImg1: "workimg9.jpg",
+      left1: "PME MTL",
+      middle1: "Open",
+      right1: "2020",
+      workImg2: "workimg10.jpg",
+      left2: "GrandaWorld",
+      middle2: "Crisis24",
+      right2: "2021"
+    },
+    {
+      workImg1: "workimg11.jpg",
+      left1: "La Fondation BAnQ",
+      middle1: "100 Temps",
+      right1: "2020",
+      workImg2: "workimg12.jpg",
+      left2: "Orchestre Symphonique",
+      middle2: "Synthesia",
+      right2: "2019"
+    },
+    {
+      workImg1: "workimg13.jpg",
+      left1: "Lamajuere",
+      middle1: "Lamajuere",
+      right1: "2019",
+      workImg2: "workimg14.jpg",
+      left2: "Solio",
+      middle2: "La Coop",
+      right2: "2019"
     },
   ]
 
@@ -113,30 +140,69 @@ const Projects = () => {
       })
   }
 
-  // gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger)
 
-  // useGSAP(() => {
-  //   gsap.from('.workDivParent', {
-  //     height: 0,
-  //     stagger: {
-  //       amount: 0.5
-  //     },
-  //     scrollTrigger: {
-  //       trigger: '.lol',
-  //       markers: true,
-  //       start: "top 100%",
-  //       end: "top -100%",
-  //       scrub: true
-  //     },
+  useGSAP(() => {
+  gsap.set('.workDivParent', {
+    height: "3rem",
+    overflow: 'hidden'
+  })
+})
 
-  //   })
-  // })
+
+useGSAP(() => {
+  const rows = gsap.utils.toArray('.workDivParent')
+  
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.lol',
+      start: 'top 80%',
+      end: `+=${rows.length * 310}`, // scroll distance
+      scrub: true,
+    }
+  })
+
+  rows.forEach(row => {
+    tl.to(row, {
+      height: '20rem',
+      ease: 'none'
+    })
+  })
+})
+
+// useGSAP(() => {
+//   const rows = gsap.utils.toArray('.workDivParent')
+
+//   const ROW_OPEN_HEIGHT = 320   // jitni height chahiye
+//   const SCROLL_PER_ROW = window.innerHeight * 0.8 // har row ka scroll time
+
+//   const tl = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: '.lol',
+//       start: 'top 100%',
+//       end: `+=${rows.length * SCROLL_PER_ROW}`,
+//       scrub: true,
+//       pin: true,
+//       anticipatePin: 1
+//     }
+//   })
+
+//   rows.forEach(row => {
+//     tl.to(row, {
+//       height: ROW_OPEN_HEIGHT,
+//       ease: 'none',
+//       duration: 1
+//     })
+//   })
+// })
+
 
 
 
 
   return (
-    <div className='pt-1'>
+    <div className='boody pt-1'>
       <div className='h-[7.5vh] fixed top-0 left-0 w-full bg-white z-2'></div>
       <div ref={workUpperRef} className='flex text-black border-y-2 z-5 justify-between fixed w-full bg-white top-[7.5vh] px-5 py-2'>
         <div><h3 ref={workUpperLeft} className='font-[font300] font-normal text-4xl'>iA Financial Group</h3></div>
@@ -149,45 +215,66 @@ const Projects = () => {
         </div>
         <div className='lol -mt-12'
           onMouseEnter={inAnimation}
-          onMouseLeave={outAnimation}
-        >
-          <div className='workDivParent w-full bg-red-200 flex justify-around flex-wrap gap-2'>
-            {workData.map((works, idx) => {
-              return (
-                <>
-                  <div key={idx} className='workDiv w-[47.9vw] h-[40vh] relative overflow-hidden cursor-pointer'
-                    onMouseEnter={() => {
-                      workUpperLeft.current.innerText = works.left1
-                      workUpperMiddle.current.innerText = works.middle1
-                      workUpperRight.current.innerText = works.right1
-                      colorAnimation()
-                    }}
+          onMouseLeave={outAnimation}>
+          {workData.map((works, idx) => {
+            return (
+              <div className='workDivParent w-full flex justify-around flex-wrap mb-2' key={idx}>
+                <div className='workDiv w-[47.5vw] h-full relative overflow-hidden cursor-pointer'
+                  onMouseEnter={() => {
+                    workUpperLeft.current.innerText = works.left1
+                    workUpperMiddle.current.innerText = works.middle1
+                    workUpperRight.current.innerText = works.right1
+                    colorAnimation()
+                  }}
 
-                  >
-                    <img className='h-full w-full object-cover' src={works.workImg1} alt="" />
-                    <div className='opacity-0 w-full h-full bg-black/30 absolute top-0 left-0 flex justify-center items-center'>
-                      <a className='text-white transition-all border-2 rounded-full py-1 px-10 text-4xl font-[font500] uppercase' href="#">View Project</a>
-                    </div>
+                >
+                  <img className='h-full w-full object-top object-cover' src={works.workImg1} alt="" />
+                  <div className='opacity-0 w-full h-full bg-black/30 absolute top-0 left-0 flex justify-center items-center'>
+                    <a className='text-white transition-all border-2 rounded-full py-1 px-10 text-4xl font-[font500] uppercase' href="#">View Project</a>
                   </div>
-                  <div key={idx} className='workDiv w-[47.9vw] h-[40vh] relative overflow-hidden cursor-pointer'
-                    onMouseEnter={() => {
-                      workUpperLeft.current.innerText = works.left2
-                      workUpperMiddle.current.innerText = works.middle2
-                      workUpperRight.current.innerText = works.right2
-                      colorAnimation()
-                    }}
+                </div>
+                <div className='workDiv w-[47.5vw] h-full relative overflow-hidden cursor-pointer'
+                  onMouseEnter={() => {
+                    workUpperLeft.current.innerText = works.left2
+                    workUpperMiddle.current.innerText = works.middle2
+                    workUpperRight.current.innerText = works.right2
+                    colorAnimation()
+                  }}
 
-                  >
-                    <img className='h-full w-full object-cover' src={works.workImg2} alt="" />
-                    <div className='opacity-0 w-full h-full bg-black/30 absolute top-0 left-0 flex justify-center items-center'>
-                      <a className='text-white transition-all border-2 rounded-full py-1 px-10 text-4xl font-[font500] uppercase' href="#">View Project</a>
-                    </div>
+                >
+                  <img className='h-full w-full object-top object-cover' src={works.workImg2} alt="" />
+                  <div className='opacity-0 w-full h-full bg-black/30 absolute top-0 left-0 flex justify-center items-center'>
+                    <a className='text-white transition-all border-2 rounded-full py-1 px-10 text-4xl font-[font500] uppercase' href="#">View Project</a>
                   </div>
-                </>
+                </div>
+              </div>
+            )
+          })}
+          {/* {workData.map((works, idx) => (
+            <div key={idx} className='workDivParent w-full h-80 flex justify-around flex-wrap mb-10'>
+              {[1, 2].map((num) => (
+                <div
+                  key={num}
+                  className='workDiv w-[47.5vw] h-full relative overflow-hidden cursor-pointer'
+                  onMouseEnter={() => {
+                    workUpperLeft.current.innerText = works[`left${num}`]
+                    workUpperMiddle.current.innerText = works[`middle${num}`]
+                    workUpperRight.current.innerText = works[`right${num}`]
+                    colorAnimation()
+                  }}
+                >
+                  <img className='h-full w-full object-cover' src={works[`workImg${num}`]} alt="" />
+                  <div className='opacity-0 w-full h-full bg-black/30 absolute top-0 left-0 flex justify-center items-center'>
+                    <a className='text-white transition-all border-2 rounded-full py-1 px-10 text-4xl font-[font500] uppercase' href="#">View Project</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))} */}
 
-              )
-            })}
-          </div>
+
+
+
         </div>
       </div>
     </div>
