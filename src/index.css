@@ -52,3 +52,21 @@ html {
         transform: translateX(-100%);
     }
 }
+
+
+
+.workDiv{
+    transition: all 0.2s ease;
+}
+
+.workDiv:hover{
+    border-radius: 30px;
+}
+
+.workDiv div{
+    transition: all 0.2s ease-in-out;
+}
+
+.workDiv:hover div{
+    opacity: 1;
+}
