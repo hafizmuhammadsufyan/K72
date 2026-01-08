@@ -143,59 +143,59 @@ const Projects = () => {
   gsap.registerPlugin(ScrollTrigger)
 
   useGSAP(() => {
-  gsap.set('.workDivParent', {
-    height: "3rem",
-    overflow: 'hidden'
-  })
-})
-
-
-useGSAP(() => {
-  const rows = gsap.utils.toArray('.workDivParent')
-  
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.lol',
-      start: 'top 80%',
-      end: `+=${rows.length * 310}`, // scroll distance
-      scrub: true,
-    }
-  })
-
-  rows.forEach(row => {
-    tl.to(row, {
-      height: '20rem',
-      ease: 'none'
+    gsap.set('.workDivParent', {
+      height: "3rem",
+      overflow: 'hidden'
     })
   })
-})
 
-// useGSAP(() => {
-//   const rows = gsap.utils.toArray('.workDivParent')
 
-//   const ROW_OPEN_HEIGHT = 320   // jitni height chahiye
-//   const SCROLL_PER_ROW = window.innerHeight * 0.8 // har row ka scroll time
+  useGSAP(() => {
+    const rows = gsap.utils.toArray('.workDivParent')
 
-//   const tl = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: '.lol',
-//       start: 'top 100%',
-//       end: `+=${rows.length * SCROLL_PER_ROW}`,
-//       scrub: true,
-//       pin: true,
-//       anticipatePin: 1
-//     }
-//   })
 
-//   rows.forEach(row => {
-//     tl.to(row, {
-//       height: ROW_OPEN_HEIGHT,
-//       ease: 'none',
-//       duration: 1
-//     })
-//   })
-// })
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.lol',
+        start: 'top 80%',
+        end: `+=${rows.length * 300}`, // scroll distance
+        scrub: true,
+      }
+    })
+
+    rows.forEach(row => {
+      tl.to(row, {
+        height: '20rem',
+        ease: 'none'
+      })
+    })
+  })
+
+  // useGSAP(() => {
+  //   const rows = gsap.utils.toArray('.workDivParent')
+
+  //   const ROW_OPEN_HEIGHT = 320   // jitni height chahiye
+  //   const SCROLL_PER_ROW = window.innerHeight * 0.8 // har row ka scroll time
+
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: '.lol',
+  //       start: 'top 100%',
+  //       end: `+=${rows.length * SCROLL_PER_ROW}`,
+  //       scrub: true,
+  //       pin: true,
+  //       anticipatePin: 1
+  //     }
+  //   })
+
+  //   rows.forEach(row => {
+  //     tl.to(row, {
+  //       height: ROW_OPEN_HEIGHT,
+  //       ease: 'none',
+  //       duration: 1
+  //     })
+  //   })
+  // })
 
 
 
